@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RootNamespace>MyITracker</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Infrastructure\" />
+    <Folder Include="Types\" />
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Types\Alias.fs" />
+    <Compile Include="Types\Interfaces.fs" />
+    <Compile Include="Types\Wrappers.fs" />
+    <Compile Include="Types\Note.fs" />
+    <Compile Include="Types\Note.mod.fs" />
+    <Compile Include="Types\Ticket.fs" />
+    <Compile Include="Types\Customer.fs" />
+    <Compile Include="Types\Priority.fs" />
+    <Compile Include="Types\Search.fs" />
+    <Compile Include="Types\Situation.fs" />
+    <Compile Include="Types\User.fs" />
+    <Compile Include="Types\Login.fs" />
+    
+    <Compile Include="Infrastructure\LemonCypher.fs" />
+    <Compile Include="Infrastructure\HttpApi.fs" />
+    <Compile Include="Infrastructure\SqliteApi.fs" />
+    
+    <Compile Include="Repositories\SearchRepo.fs" />
+    <Compile Include="Repositories\TicketRepo.fs" />
+    <Compile Include="Repositories\CustomerRepo.fs" />
+    <Compile Include="Repositories\LoginRepo.fs" />
+    <Compile Include="Repositories\UserRepo.fs" />
+    <Compile Include="Repositories\SituationRepo.fs" />
+    <Compile Include="Repositories\PriorityRepo.fs" />
+    <Compile Include="Test.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="FSharp.Core" Version="4.7.2" />
+    <PackageReference Include="sqlite-net-sqlcipher" Version="1.7.335" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:local="clr-namespace:MyITracker.Views"
+  x:Class="MyITracker.Views.ListTicketNotesPage"
+  Title="Notes"
+  IconImageSource="NoteIcon_36pt">
+
+  <ContentPage.Content>
+
+    <Grid RowDefinitions="*">
+      <RefreshView
+        IsRefreshing="{Binding Path=IsRefreshing}"
+        Command="{Binding Path=RefreshCommand}">
+        <CollectionView
+          ItemsSource="{Binding Path=Ticket.xnotes}"
+          SelectionMode="None">
+
+          <CollectionView.ItemTemplate>
+            <DataTemplate>
+              <StackLayout>
+                <StackLayout.GestureRecognizers>
+                  <TapGestureRecognizer
+                    Command="{Binding Path=BindingContext.EditNoteCommand, Source={RelativeSource AncestorType={x:Type CollectionView}}}"
+                    CommandParameter="{Binding}" />
+                </StackLayout.GestureRecognizers>
+                <Label
+                  LineBreakMode="WordWrap"
+                  FontAttributes="Bold">
+                  <Label.FormattedText>
+                    <FormattedString>
+                      <Span
+                        Text="{Binding created_by, StringFormat='Created by: {0} On:'}" />
+                      <Span
+                        Text="{Binding date_created, StringFormat=' {0}'}" />
+                    </FormattedString>
+                  </Label.FormattedText>
+                </Label>
+
+                <Label
+                  Text="{Binding note}"
+                  LineBreakMode="TailTruncation" />
+
+                <BoxView
+                  StyleClass="Separator" />
+
+              </StackLayout>
+            </DataTemplate>
+          </CollectionView.ItemTemplate>
+        </CollectionView>
+      </RefreshView>
+
+      <ImageButton
+        StyleClass="AddButton"
+        Command="{Binding Path=AddNoteCommand}" />
+
+    </Grid>
+
+  </ContentPage.Content>
+
+</ContentPage>

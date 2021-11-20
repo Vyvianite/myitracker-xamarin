@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentPage
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  x:Class="MyITracker.Views.TicketSearchPage"
+  xmlns:local="clr-namespace:MyITracker.Views"
+  Title="Tickets"
+  IconImageSource="TicketIcon_36pt">
+
+  <ContentPage.Content>
+    <CollectionView
+      ItemsSource="{Binding Path=SearchResults.tickets}"
+      SelectionMode="None">
+
+      <CollectionView.ItemTemplate>
+        <DataTemplate>
+          <StackLayout>
+            <StackLayout.GestureRecognizers>
+              <TapGestureRecognizer
+                Command="{Binding Path=BindingContext.EditTicketCommand, Source={RelativeSource AncestorType={x:Type CollectionView}}}"
+                CommandParameter="{Binding}" />
+            </StackLayout.GestureRecognizers>
+            <Label
+              Text="{Binding fullname, StringFormat='Customer: {0}'}"
+              LineBreakMode="WordWrap"
+              FontAttributes="Bold" />
+            <Label
+              Text="{Binding note}"
+              LineBreakMode="TailTruncation" />
+
+            <BoxView
+              StyleClass="Separator" />
+          </StackLayout>
+        </DataTemplate>
+      </CollectionView.ItemTemplate>
+    </CollectionView>
+  </ContentPage.Content>
+</ContentPage>

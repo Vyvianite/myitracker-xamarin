@@ -1,0 +1,343 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xaml-comp compile="true" ?>
+
+<!--If you get a Xaml Parse Exception at runtime where this file cannot be located, try removing it from .csproj file. I don't know why.
+    Or just restart Visual Studio. IDK.-->
+
+<ResourceDictionary
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+  
+  <!--#region BaseColors-->
+  <Color
+    x:Key="PrimaryBackgroundColor">#222222</Color>
+  <Color
+    x:Key="SecondaryBackgroundColor">#404040</Color>
+  <Color
+    x:Key="HighlightColor">#0098e5</Color>
+
+  <Color
+    x:Key="TextColor">White</Color>
+  <x:Double
+    x:Key="FontSize">18</x:Double>
+
+  <x:Double
+    x:Key="HeightRequest">40</x:Double>
+
+  <Thickness
+    x:Key="Margin">5,5</Thickness>
+  <!--#endregion-->
+
+  <!--#region ImplicitLayouts-->
+  <Style
+    TargetType="ContentPage"
+    ApplyToDerivedTypes="True">
+    <Setter
+      Property="BackgroundColor"
+      Value="{StaticResource Key=PrimaryBackgroundColor}" />
+  </Style>
+
+  <Style
+    TargetType="NavigationPage">
+    <Setter
+      Property="BarBackgroundColor"
+      Value="{StaticResource Key=SecondaryBackgroundColor}" />
+    <Setter
+      Property="BarTextColor"
+      Value="{StaticResource Key=TextColor}" />
+  </Style>
+
+  <Style
+    TargetType="RefreshView">
+    <Setter
+      Property="RefreshColor"
+      Value="{StaticResource HighlightColor}" />
+  </Style>
+
+  <Style
+    TargetType="TabbedPage"
+    ApplyToDerivedTypes="True">
+    <Setter
+      Property="BarBackgroundColor"
+      Value="{StaticResource Key=SecondaryBackgroundColor}" />
+    <Setter
+      Property="BarTextColor"
+      Value="{StaticResource Key=HighlightColor}" />
+    <Setter
+      Property="SelectedTabColor"
+      Value="{StaticResource Key=HighlightColor}" />
+    <!--############################wat does this even doooo-->
+    <Setter
+      Property="UnselectedTabColor"
+      Value="{StaticResource Key=TextColor}" />
+  </Style>
+
+  <Style
+    TargetType="CollectionView">
+    <Setter
+      Property="SelectionMode"
+      Value="None" />
+    <Setter
+      Property="BackgroundColor"
+      Value="{StaticResource Key=PrimaryBackgroundColor}" />
+  </Style>
+
+  <Style
+    TargetType="ScrollView">
+    <Setter
+      Property="Margin"
+      Value="0" />
+    <Setter
+      Property="Padding"
+      Value="0" />
+  </Style>
+
+  <Style
+    TargetType="StackLayout">
+    <Setter
+      Property="BackgroundColor"
+      Value="{StaticResource Key=PrimaryBackgroundColor}" />
+    <Setter
+      Property="Padding"
+      Value="5" />
+    <Setter
+      Property="Spacing"
+      Value="0" />
+  </Style>
+  <!--#endregion-->
+
+  <!--#region Implicits-->
+  <!--<Style TargetType="View" ApplyToDerivedTypes="True">
+            Doesn't Work for some Reason
+      </Style>-->
+
+  <Style
+    TargetType="Button">
+    <Setter
+      Property="HeightRequest"
+      Value="{StaticResource Key=HeightRequest}" />
+    <Setter
+      Property="BackgroundColor"
+      Value="{StaticResource Key=HighlightColor}" />
+    <Setter
+      Property="FontSize"
+      Value="{StaticResource Key=FontSize}" />
+    <Setter
+      Property="TextColor"
+      Value="{StaticResource Key=TextColor}" />
+    <Setter
+      Property="Margin"
+      Value="{StaticResource Key=Margin}" />
+    <Setter
+      Property="CornerRadius"
+      Value="0" />
+  </Style>
+
+  <Style
+    TargetType="Entry">
+    <Setter
+      Property="HeightRequest"
+      Value="{StaticResource Key=HeightRequest}" />
+    <Setter
+      Property="BackgroundColor"
+      Value="{StaticResource Key=SecondaryBackgroundColor}" />
+    <Setter
+      Property="FontSize"
+      Value="{StaticResource Key=FontSize}" />
+    <Setter
+      Property="TextColor"
+      Value="{StaticResource Key=TextColor}" />
+    <Setter
+      Property="Margin"
+      Value="{StaticResource Key=Margin}" />
+  </Style>
+
+  <Style
+    TargetType="Label">
+    <Setter
+      Property="FontSize"
+      Value="{StaticResource Key=FontSize}" />
+    <Setter
+      Property="TextColor"
+      Value="{StaticResource Key=TextColor}" />
+    <Setter
+      Property="Margin"
+      Value="{StaticResource Key=Margin}" />
+  </Style>
+
+  <Style
+    TargetType="Picker">
+    <Setter
+      Property="HeightRequest"
+      Value="{StaticResource Key=HeightRequest}" />
+    <Setter
+      Property="BackgroundColor"
+      Value="{StaticResource Key=SecondaryBackgroundColor}" />
+    <Setter
+      Property="FontSize"
+      Value="{StaticResource Key=FontSize}" />
+    <Setter
+      Property="TextColor"
+      Value="{StaticResource Key=TextColor}" />
+    <Setter
+      Property="Margin"
+      Value="{StaticResource Key=Margin}" />
+  </Style>
+
+  <Style
+    TargetType="Editor">
+    <Setter
+      Property="BackgroundColor"
+      Value="{StaticResource Key=SecondaryBackgroundColor}" />
+    <Setter
+      Property="FontSize"
+      Value="{StaticResource Key=FontSize}" />
+    <Setter
+      Property="TextColor"
+      Value="{StaticResource Key=TextColor}" />
+    <Setter
+      Property="Margin"
+      Value="{StaticResource Key=Margin}" />
+  </Style>
+
+  <Style
+    TargetType="ActivityIndicator">
+    <Setter
+      Property="Color"
+      Value="{StaticResource Key=HighlightColor}" />
+  </Style>
+
+  <Style
+    TargetType="SearchBar">
+    <Setter
+      Property="HeightRequest"
+      Value="{StaticResource Key=HeightRequest}" />
+    <Setter
+      Property="BackgroundColor"
+      Value="{StaticResource Key=SecondaryBackgroundColor}" />
+    <Setter
+      Property="FontSize"
+      Value="{StaticResource Key=FontSize}" />
+    <Setter
+      Property="TextColor"
+      Value="{StaticResource Key=TextColor}" />
+    <Setter
+      Property="Margin"
+      Value="{StaticResource Key=Margin}" />
+    <Setter
+      Property="IsSpellCheckEnabled"
+      Value="False" />
+  </Style>
+  <!--#endregion-->
+
+  <!--#region Explicits-->
+  <Style
+    Class="Title"
+    TargetType="Label">
+    <Setter
+      Property="HeightRequest"
+      Value="40" />
+    <Setter
+      Property="HorizontalTextAlignment"
+      Value="Center" />
+    <Setter
+      Property="VerticalTextAlignment"
+      Value="Center" />
+    <Setter
+      Property="FontSize"
+      Value="Large" />
+  </Style>
+
+  <Style
+    Class="AddButton"
+    TargetType="ImageButton">
+    <Setter
+      Property="Source"
+      Value="AddIcon_48pt" />
+    <Setter
+      Property="BackgroundColor"
+      Value="{StaticResource SecondaryBackgroundColor}" />
+    <Setter
+      Property="HeightRequest"
+      Value="70" />
+    <Setter
+      Property="WidthRequest"
+      Value="70" />
+    <Setter
+      Property="CornerRadius"
+      Value="35" />
+    <Setter
+      Property="HorizontalOptions"
+      Value="End" />
+    <Setter
+      Property="VerticalOptions"
+      Value="End" />
+    <Setter
+      Property="Margin"
+      Value="15" />
+    <Setter
+      Property="Padding"
+      Value="0" />
+  </Style>
+
+  <Style
+    Class="NoteFrame"
+    TargetType="Frame">
+    <Setter
+      Property="HasShadow"
+      Value="False" />
+    <Setter
+      Property="CornerRadius"
+      Value="0" />
+    <Setter
+      Property="Padding"
+      Value="2" />
+    <Setter
+      Property="BorderColor"
+      Value="{StaticResource Key=SecondaryBackgroundColor}" />
+    <Setter
+      Property="BackgroundColor"
+      Value="{StaticResource Key=SecondaryBackgroundColor}" />
+    <Setter
+      Property="VerticalOptions"
+      Value="FillAndExpand" />
+    <Setter
+      Property="Margin"
+      Value="5" />
+  </Style>
+
+  <Style
+    Class="NoteEditor"
+    TargetType="Editor">
+    <Setter
+      Property="BackgroundColor"
+      Value="{StaticResource Key=PrimaryBackgroundColor}" />
+    <Setter
+      Property="Margin"
+      Value="0" />
+    <Setter
+      Property="VerticalOptions"
+      Value="FillAndExpand" />
+  </Style>
+
+  <Style
+    TargetType="BoxView"
+    Class="Separator">
+    <Setter
+      Property="HeightRequest"
+      Value="1" />
+    <Setter
+      Property="BackgroundColor"
+      Value="{StaticResource Key=SecondaryBackgroundColor}" />
+  </Style>
+  <!--#endregion-->
+
+</ResourceDictionary>
+
+
+
+<!--<Style x:Key="GenericButton" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="Azure"></Setter>
+    </Style>-->
+
+<!--Style="{StaticResource GenericButton}"-->

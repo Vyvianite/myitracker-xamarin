@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentPage
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  x:Class="MyITracker.Views.ListCustomersPage"
+  xmlns:vms="clr-namespace:MyITracker.ViewModels"
+  xmlns:myitracker="clr-namespace:MyITracker;assembly=Domain"
+  x:DataType="vms:DashboardVM"
+  Title="Customers"
+  IconImageSource="CustomerIcon_36pt">
+
+  <ContentPage.Content>
+
+    <Grid RowDefinitions="*">
+      <RefreshView
+        IsRefreshing="{Binding Path=IsRefreshing}"
+        Command="{Binding Path=Refresh}">
+        <CollectionView
+          ItemsSource="{Binding Path=Customers}"
+          SelectionMode="None">
+          <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="myitracker:ShortCustomer">
+              <StackLayout>
+                <StackLayout.GestureRecognizers>
+                  <TapGestureRecognizer
+                    Command="{Binding Path=BindingContext.EditCustomer, Source={RelativeSource AncestorType={x:Type CollectionView}}}"
+                    CommandParameter="{Binding}" />
+                </StackLayout.GestureRecognizers>
+                <Grid RowDefinitions="*,*,*" ColumnDefinitions="*">
+                  <Label
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Text="{Binding Name}"
+                    FontAttributes="Bold" />
+
+                  <Label
+                    Grid.Row="1"
+                    Grid.Column="0">
+
+                    <Label.FormattedText>
+                      <FormattedString>
+                        <Span
+                          Text="Customer Id: " />
+                        <Span
+                          Text="{Binding Index}" />
+                      </FormattedString>
+                    </Label.FormattedText>
+
+                  </Label>
+
+                  <!--<Label
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    LineBreakMode="TailTruncation"
+                    Text="{Binding Phone}" />-->
+
+                </Grid>
+                <BoxView
+                  StyleClass="Separator" />
+              </StackLayout>
+            </DataTemplate>
+          </CollectionView.ItemTemplate>
+        </CollectionView>
+      </RefreshView>
+
+      <ImageButton
+        StyleClass="AddButton"
+        Command="{Binding Path=AddCustomer}" />
+
+    </Grid>
+  </ContentPage.Content>
+</ContentPage>

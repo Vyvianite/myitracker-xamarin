@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<ContentPage
+  x:Class="MyITracker.Views.ListTicketsPage"
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:vms="clr-namespace:MyITracker.ViewModels"
+  xmlns:views="clr-namespace:MyITracker.Views"
+  x:DataType="vms:DashboardVM"
+  Title="Tickets"
+  IconImageSource="TicketIcon_36pt">
+
+  <ContentPage.Resources>
+    <ResourceDictionary Source="../Templates/ShortTicket.xaml"/>
+  </ContentPage.Resources>
+
+  <ContentPage.Content>
+    <Grid RowDefinitions="*">
+
+      <RefreshView
+        IsRefreshing="{Binding Path=IsRefreshing}"
+        Command="{Binding Path=Refresh}">
+
+        <CollectionView
+          ItemsSource="{Binding Path=Tickets}"
+          SelectionMode="Single"
+          ItemTemplate="{StaticResource ShortTicket}">
+        </CollectionView>
+      </RefreshView>
+
+      <ImageButton
+        StyleClass="AddButton"
+        Command="{Binding Path=AddTicket}" />
+
+    </Grid>
+  </ContentPage.Content>
+</ContentPage>

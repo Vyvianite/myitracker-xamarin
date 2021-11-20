@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xaml-comp compile="true" ?>
+
+<ResourceDictionary
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:myitracker="clr-namespace:MyITracker;assembly=Domain">
+
+  <DataTemplate
+    x:Key="ShortTicket"
+    x:DataType="myitracker:ShortTicket">
+    <StackLayout>
+      <StackLayout.GestureRecognizers>
+        <TapGestureRecognizer
+          Command="{Binding Path=BindingContext.EditTicket, Source={RelativeSource AncestorType={x:Type CollectionView}}}"
+          CommandParameter="{Binding}" />
+      </StackLayout.GestureRecognizers>
+      <Grid
+        RowDefinitions="*,*,*"
+        ColumnDefinitions="50,*">
+
+        <Frame
+          Grid.RowSpan="3"
+          Grid.Column="0"
+          Margin="0"
+          Padding="0"
+          WidthRequest="40"
+          HeightRequest="40"
+          BackgroundColor="{Binding pColor}"
+          CornerRadius="20"
+          MinimumHeightRequest="40"
+          MinimumWidthRequest="40"
+          HorizontalOptions="Center"
+          VerticalOptions="Center">
+
+          <Label
+            HorizontalTextAlignment="Center"
+            Text="{Binding Priority}"
+            VerticalTextAlignment="Center"
+            HorizontalOptions="Center"
+            VerticalOptions="Center" />
+
+        </Frame>
+
+        <Label
+          Grid.Row="0"
+          Grid.Column="1"
+          Text="{Binding Name}"
+          FontAttributes="Bold" />
+
+        <Label
+          Grid.Row="1"
+          Grid.Column="1"
+          Text="{Binding Index}" />
+
+        <Label
+          Grid.Row="2"
+          Grid.Column="1"
+          LineBreakMode="TailTruncation"
+          Text="{Binding Subject}" />
+
+      </Grid>
+      <BoxView
+        StyleClass="Separator" />
+    </StackLayout>
+  </DataTemplate>
+</ResourceDictionary>

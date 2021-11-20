@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentPage
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  x:Class="MyITracker.Views.AddCustomerPage"
+  Title="Add Customer">
+
+  <ContentPage.ToolbarItems>
+    <ToolbarItem
+      IconImageSource="SaveIcon_36pt"
+      Command="{Binding Path=UploadCommand}" />
+  </ContentPage.ToolbarItems>
+
+  <ContentPage.Content>
+    <ScrollView>
+      <StackLayout>
+        <Label
+          Text="Customer Name" />
+        <Entry
+          Text="{Binding Path=Customer.Name}" />
+
+        <Label
+          Text="Contract Status" />
+        <Picker
+          SelectedItem="{Binding Path=Customer.contract}">
+          <Picker.Items>
+            <x:String>N</x:String>
+            <x:String>Y</x:String>
+          </Picker.Items>
+        </Picker>
+
+        <Label
+          Text="Street Address" />
+        <Entry
+          Text="{Binding Path=Customer.BillAddress_Addr2}" />
+
+        <Label
+          Text="City" />
+        <Entry
+          Text="{Binding Path=Customer.BillAddress_City}" />
+
+        <Label
+          Text="State" />
+        <Entry
+          Text="{Binding Path=Customer.BillAddress_State}" />
+
+        <Label
+          Text="ZipCode" />
+        <Entry
+          Text="{Binding Path=Customer.BillAddress_PostalCode}" />
+
+        <Label
+          Text="Phone Number" />
+        <Entry
+          Text="{Binding Path=Customer.Phone}" />
+
+        <Label
+          Text="Email" />
+        <Entry
+          Text="{Binding Path=Customer.Email}" />
+
+        <Label
+          Text="Contact Name" />
+        <Entry
+          Text="{Binding Path=Customer.Contact}" />
+
+        <Label
+          Text="Alternate Contact Name" />
+        <Entry
+          Text="{Binding Path=Customer.AltContact}" />
+
+      </StackLayout>
+    </ScrollView>
+  </ContentPage.Content>
+</ContentPage>

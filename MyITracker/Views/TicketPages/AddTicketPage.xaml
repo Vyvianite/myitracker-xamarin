@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentPage
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  x:Class="MyITracker.Views.AddTicketPage"
+  Title="Add Ticket">
+
+  <ContentPage.ToolbarItems>
+    <ToolbarItem
+      IconImageSource="SaveIcon_36pt"
+      Command="{Binding Path=UploadCommand}" />
+  </ContentPage.ToolbarItems>
+
+  <ContentPage.Content>
+
+    <ScrollView>
+
+      <StackLayout>
+
+        <Label
+          Text="Subject" />
+        <Entry
+          Text="{Binding Path=Ticket.tkt_subject}" />
+
+        <Label
+          Text="Assigned Technician" />
+        <Picker
+          ItemsSource="{Binding Path=TechCollection}"
+          ItemDisplayBinding="{Binding Path=username}"
+          SelectedItem="{Binding Path=Ticket.Assigned}" />
+
+        <Label
+          Text="Customer" />
+
+        <Picker
+          ItemsSource="{Binding Path=CustomerCollection}"
+          ItemDisplayBinding="{Binding Path=Name}"
+          SelectedItem="{Binding Path=Ticket.Customer}">
+
+        </Picker>
+
+        <Label
+          Text="Priority" />
+        <Picker
+          ItemsSource="{Binding Path=PriorityCollection}"
+          ItemDisplayBinding="{Binding Path=priority}"
+          SelectedItem="{Binding Path=Ticket.Priority}" />
+
+        <Label
+          Text="Situation" />
+        <Picker
+          ItemsSource="{Binding Path=SituationCollection}"
+          ItemDisplayBinding="{Binding Path=situation_label}"
+          SelectedItem="{Binding Path=Ticket.Situation}" />
+
+        <Label
+          Text="Add a Note" />
+        <Editor
+          HeightRequest="200"
+          Text="{Binding Path=Note.note, Mode=TwoWay}" />
+
+      </StackLayout>
+
+    </ScrollView>
+
+  </ContentPage.Content>
+
+</ContentPage>
